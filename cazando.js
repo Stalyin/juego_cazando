@@ -18,13 +18,11 @@ let comidaX = 0;
 let comidaY = 0;
 
 function graficarGato() {
-  context.fillStyle = "blue";
-  context.fillRect(ANCHO, ALTO, ANCHO_GATO, ALTO_GATO);
+  graficarRectangulo(ANCHO, ALTO, ANCHO_GATO, ALTO_GATO, "blue");
 }
 
 function graficarComida() {
-  context.fillStyle = "yellow";
-  context.fillRect(comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA);
+  graficarRectangulo(comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA, "green");
 }
 
 function iniciarJuego() {
@@ -33,6 +31,10 @@ function iniciarJuego() {
 
   context.fillRect(comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA);
   graficarComida();
-
   graficarGato();
+}
+
+function graficarRectangulo(x, y, ancho, alto, color) {
+  context.fillStyle = color;
+  context.fillRect(x, y, ancho, alto);
 }
