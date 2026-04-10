@@ -4,11 +4,11 @@
   <title>Juego Cazando</title>
   <link rel="stylesheet" href="cazando.css">
 </head>
-<body>
+<body onload="graficarGato();">
 
   <h1>Juego Cazando</h1>
   <p>Autor: Cristian Peña</p>
-
+  <canvas id="areaJuego" width="500" height="500"></canvas>
 
   <div class="controles">
     <button>⬆</button>
@@ -26,6 +26,7 @@
 
   <p id="mensaje"></p>
 
-
+<!-- Carga de js -->
+ <script src="cazando.js"></script>
 </body>
 </html>
