@@ -44,6 +44,8 @@ function iniciarJuego() {
   limpiarCanva();
   graficarComida();
   graficarGato();
+
+  setInterval(restarTiempo, 1000);
 }
 
 function moverIzquierda() {
@@ -99,4 +101,11 @@ function detectarColision() {
     puntaje += 1;
     mostrarEnSpan("puntos", puntaje);
   }
+}
+
+let tiempo = 10;
+
+function restarTiempo() {
+  tiempo -= 1;
+  mostrarEnSpan("tiempo", tiempo);
 }
