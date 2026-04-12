@@ -1,11 +1,11 @@
 let canvas = document.getElementById("areaJuego");
 let context = canvas.getContext("2d");
 
-const ANCHO_GATO = 80;
-const ALTO_GATO = 50;
+const ANCHO_GATO = 70;
+const ALTO_GATO = 40;
 
-const ANCHO_COMIDA = 25;
-const ALTO_COMIDA = 25;
+const ANCHO_COMIDA = 20;
+const ALTO_COMIDA = 20;
 
 // variables de posicion
 let gatoX = 0;
@@ -52,7 +52,6 @@ function moverIzquierda() {
   graficarGato();
   graficarComida();
   detectarColision();
-  s;
 }
 
 function moverDerecha() {
@@ -79,13 +78,25 @@ function moverAbajo() {
   detectarColision();
 }
 
+let puntaje = 0;
+
 function detectarColision() {
+  console.log("gatoY:", gatoY, "gato abajo:", gatoY + ALTO_GATO);
+  console.log("comidaY:", comidaY, "comida abajo:", comidaY + ALTO_COMIDA);
   if (
-    gatoX + ANCHO_GATO > comidaX &&
-    gatoX < comidaX + ANCHO_COMIDA &&
-    gatoY + ALTO_GATO > comidaY &&
-    gatoY < comidaY + ALTO_COMIDA
+    gatoX + ANCHO_GATO >= comidaX &&
+    gatoX <= comidaX + ANCHO_COMIDA &&
+    gatoY + ALTO_GATO >= comidaY &&
+    gatoY <= comidaY + ALTO_COMIDA
   ) {
-    alert("Delicious! 😻");
+    alert("Delicius! 😻");
+
+    comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
+    comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
+
+    graficarGato();
+
+    puntaje += 1;
+    mostrarEnSpan("puntos", puntaje);
   }
 }
