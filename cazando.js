@@ -1,11 +1,11 @@
 let canvas = document.getElementById("areaJuego");
 let context = canvas.getContext("2d");
 
-const ANCHO_GATO = 70;
-const ALTO_GATO = 40;
+const ANCHO_GATO = 140;
+const ALTO_GATO = 80;
 
-const ANCHO_COMIDA = 20;
-const ALTO_COMIDA = 20;
+const ANCHO_COMIDA = 60;
+const ALTO_COMIDA = 60;
 
 // variables de posicion
 let gatoX = 0;
@@ -16,6 +16,8 @@ let comidaY = 0;
 
 let anchoCentrado = (canvas.width - ANCHO_GATO) / 2;
 let altoCentrado = (canvas.height - ALTO_GATO) / 2;
+
+let intervaloTiempo;
 
 function graficarGato() {
   graficarRectangulo(gatoX, gatoY, ANCHO_GATO, ALTO_GATO, "blue");
@@ -45,7 +47,7 @@ function iniciarJuego() {
   graficarComida();
   graficarGato();
 
-  setInterval(restarTiempo, 1000);
+  intervaloTiempo = setInterval(restarTiempo, 1000);
 }
 
 function moverIzquierda() {
@@ -83,23 +85,23 @@ function moverAbajo() {
 let puntaje = 0;
 
 function detectarColision() {
-  console.log("gatoY:", gatoY, "gato abajo:", gatoY + ALTO_GATO);
-  console.log("comidaY:", comidaY, "comida abajo:", comidaY + ALTO_COMIDA);
   if (
     gatoX + ANCHO_GATO >= comidaX &&
     gatoX <= comidaX + ANCHO_COMIDA &&
     gatoY + ALTO_GATO >= comidaY &&
     gatoY <= comidaY + ALTO_COMIDA
   ) {
-    alert("Delicius! 😻");
+    puntaje += 1;
+    mostrarEnSpan("puntos", puntaje);
 
     comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
     comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
 
+    limpiarCanva();
     graficarGato();
+    graficarComida();
 
-    puntaje += 1;
-    mostrarEnSpan("puntos", puntaje);
+    alert("Delicius! 😻");
   }
 }
 
@@ -108,4 +110,23 @@ let tiempo = 10;
 function restarTiempo() {
   tiempo -= 1;
   mostrarEnSpan("tiempo", tiempo);
+
+  if (puntaje === 6) {
+    alert("Winner 🏆");
+    clearInterval(intervaloTiempo);
+  }
+  if (tiempo === 0) {
+    alert("Game Over 😭");
+    clearInterval(intervaloTiempo);
+  }
+}
+
+function reiniciarJuego() {
+  puntaje = 0;
+  tiempo = 10;
+
+  mostrarEnSpan("puntos", puntaje);
+  mostrarEnSpan("tiempo", tiempo);
+
+  iniciarJuego();
 }
