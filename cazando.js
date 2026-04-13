@@ -47,6 +47,8 @@ function iniciarJuego() {
   graficarComida();
   graficarGato();
 
+  clearInterval(intervaloTiempo)
+
   intervaloTiempo = setInterval(restarTiempo, 1000);
 }
 
