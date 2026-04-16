@@ -37,9 +37,10 @@ body {
 body {
   font-family: "Fredoka", sans-serif;
   color: var(--texto);
-  background:
-    linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.5)),
-    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+  background-image: url(./images/fondo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
 }
 
@@ -109,7 +110,9 @@ canvas {
   max-width: 760px;
   max-height: 72vh;
   height: auto;
-  background: var(--canvas-bg);
+  background-image: url(./images/canvas2.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 4px solid var(--canvas-borde);
   border-radius: 12px;
 }
@@ -119,8 +122,8 @@ canvas {
   border-radius: 18px;
   background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
   padding: 14px;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
@@ -157,6 +160,7 @@ canvas {
   display: grid;
   gap: 10px;
   justify-items: center;
+  margin-top: auto;
 }
 
 .fila-centro {
@@ -168,7 +172,8 @@ canvas {
 
 .btn-mov,
 .btn-reiniciar {
-  border: 3px solid #9a6700;
+  border: 3px solid #e07b00;
+  box-shadow: 3px 3px 0px #e07b00;
   border-radius: 14px;
   font-family: "Press Start 2P", cursive;
   cursor: pointer;
@@ -303,8 +308,7 @@ canvas {
   }
 
   .fila-centro {
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
+    grid-template-columns: repeat(3, 56px);
   }
 
   .btn-mov {
