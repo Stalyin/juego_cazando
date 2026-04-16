@@ -1,0 +1,1 @@
+-Realicemos los siguientes cambios en la mejora visual del siguiente proyecto, utilicemos fuentes de videojuego, mejoremos el diseño de botones, en desktop dividamos en dos partes para evitar escroll lado izquierdo juego y lado derecho area de botones, puntajes, y para un diseño mobile de igual manera un diseño ordenado y alargado igual evitemos usar scroll

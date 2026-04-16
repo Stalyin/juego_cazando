@@ -1,42 +1,363 @@
+:root {
+  --bg-1: #1e1b4b;
+  --bg-2: #312e81;
+  --bg-3: #0f172a;
+
+  --panel: rgba(10, 18, 45, 0.9);
+  --panel-2: rgba(24, 32, 72, 0.92);
+  --borde: #facc15;
+
+  --texto: #ffffff;
+  --texto-suave: #dbeafe;
+
+  --canvas-bg: #0b173d;
+  --canvas-borde: #111827;
+
+  --btn-1: #facc15;
+  --btn-2: #eab308;
+
+  --btn-azul-1: #60a5fa;
+  --btn-azul-2: #2563eb;
+
+  --btn-rojo-1: #fb7185;
+  --btn-rojo-2: #e11d48;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background: #f0f0f0;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  min-height: 100%;
 }
 
-h1 {
-  margin-bottom: 5px;
+body {
+  font-family: "Fredoka", sans-serif;
+  color: var(--texto);
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.5)),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+  overflow: hidden;
 }
 
-.panel {
-  margin: 15px 0;
-  font-size: 18px;
+.pantalla-juego {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 14px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 30px;
+}
+
+.juego-card {
+  width: min(100%, 1180px);
+  min-height: calc(100vh - 28px);
+  min-height: calc(100dvh - 28px);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 14px;
+}
+
+.encabezado {
+  text-align: center;
+}
+
+.encabezado h1 {
+  margin: 0 0 10px;
+  font-family: "Press Start 2P", cursive;
+  font-size: clamp(1rem, 2vw, 1.9rem);
+  line-height: 1.5;
+  color: #fde047;
+}
+
+.encabezado p {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.layout-juego {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
+  gap: 16px;
+}
+
+.zona-juego {
+  min-height: 0;
+  display: flex;
+}
+
+.marco-canvas {
+  width: 100%;
+  border: 4px solid var(--borde);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 canvas {
-  background: white;
-  border: 2px solid black;
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  max-height: 72vh;
+  height: auto;
+  background: var(--canvas-bg);
+  border: 4px solid var(--canvas-borde);
+  border-radius: 12px;
+}
+
+.panel-lateral {
+  border: 4px solid var(--borde);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+  padding: 14px;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 14px;
+}
+
+.marcadores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card-info {
+  border: 3px solid var(--borde);
+  border-radius: 14px;
+  padding: 12px 10px;
+  text-align: center;
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.label-info {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.55rem;
+  color: #fde68a;
+  line-height: 1.6;
+}
+
+.valor-info {
+  display: block;
+  font-family: "Press Start 2P", cursive;
+  font-size: clamp(0.85rem, 1vw, 1.1rem);
 }
 
 .controles {
-  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
 }
 
-button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 18px;
+.fila-centro {
+  display: grid;
+  grid-template-columns: repeat(3, 74px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-mov,
+.btn-reiniciar {
+  border: 3px solid #9a6700;
+  border-radius: 14px;
+  font-family: "Press Start 2P", cursive;
   cursor: pointer;
+  transition:
+    transform 0.08s ease,
+    filter 0.08s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-mov:active,
+.btn-reiniciar:active {
+  transform: translateY(3px);
+  filter: brightness(0.96);
+}
+
+.btn-mov {
+  width: 74px;
+  height: 74px;
+  background: linear-gradient(180deg, var(--btn-1) 0%, var(--btn-2) 100%);
+  color: #1f2937;
+  font-size: 1.2rem;
+}
+
+.btn-arriba {
+  width: 74px;
+  height: 74px;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-reiniciar {
+  min-width: 210px;
+  min-height: 58px;
+  padding: 12px 20px;
+  background: linear-gradient(
+    180deg,
+    var(--btn-rojo-1) 0%,
+    var(--btn-rojo-2) 100%
+  );
+  color: white;
+  font-size: 0.8rem;
 }
 
 #mensaje {
-  font-size: 20px;
-  font-weight: bold;
-  color: darkred;
-  margin-top: 15px;
+  margin: 0;
+  text-align: center;
+  align-self: end;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: #fca5a5;
+}
+
+@media (max-width: 980px) {
+  body {
+    overflow: auto;
+  }
+
+  .pantalla-juego {
+    padding: 10px;
+    align-items: stretch;
+  }
+
+  .juego-card {
+    width: min(100%, 760px);
+    min-height: calc(100dvh - 20px);
+  }
+
+  .layout-juego {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .panel-lateral {
+    grid-template-rows: auto auto auto auto;
+  }
+
+  canvas {
+    max-height: 48vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .pantalla-juego {
+    padding: 8px;
+  }
+
+  .juego-card {
+    width: 100%;
+    min-height: calc(100dvh - 16px);
+    gap: 10px;
+  }
+
+  .encabezado h1 {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .encabezado p {
+    font-size: 0.8rem;
+  }
+
+  .marco-canvas,
+  .panel-lateral {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  canvas {
+    max-height: 40vh;
+    border-radius: 10px;
+  }
+
+  .marcadores {
+    gap: 8px;
+  }
+
+  .card-info {
+    padding: 10px 8px;
+  }
+
+  .label-info {
+    font-size: 0.45rem;
+    margin-bottom: 8px;
+  }
+
+  .valor-info {
+    font-size: 0.72rem;
+  }
+
+  .fila-centro {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+
+  .btn-mov {
+    width: 100%;
+    height: 62px;
+    font-size: 1rem;
+  }
+
+  .btn-arriba {
+    width: 62px;
+    height: 62px;
+  }
+
+  .btn-reiniciar {
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    font-size: 0.68rem;
+  }
+
+  #mensaje {
+    font-size: 0.58rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .pantalla-juego {
+    padding: 6px;
+  }
+
+  .juego-card {
+    min-height: calc(100dvh - 12px);
+  }
+
+  canvas {
+    max-height: 36vh;
+  }
+
+  .btn-mov {
+    height: 56px;
+  }
+
+  .btn-arriba {
+    width: 56px;
+    height: 56px;
+  }
+
+  .btn-reiniciar {
+    min-height: 48px;
+    font-size: 0.62rem;
+  }
+
+  #mensaje {
+    font-size: 0.52rem;
+  }
 }

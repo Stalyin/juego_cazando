@@ -1,37 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juego Cazando</title>
-  <link rel="stylesheet" href="cazando.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="cazando.css" />
 </head>
 <body onload="iniciarJuego();">
+  <main class="pantalla-juego">
+    <section class="juego-card">
+      <header class="encabezado">
+        <h1>Juego Cazando</h1>
+        <p>Autor: Cristian Peña</p>
+      </header>
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: Cristian Peña</p>
-  <canvas id="areaJuego" width="500" height="500"></canvas>
+      <section class="layout-juego">
+        <section class="zona-juego">
+          <div class="marco-canvas">
+            <canvas id="areaJuego" width="500" height="500"></canvas>
+          </div>
+        </section>
 
-  <div class="controles">
-    <button onclick="moverArriba();">⬆</button>
-    <br>
-    <button onclick="moverIzquierda();">⬅</button>
-    <button onclick="moverAbajo();">⬇</button>
-    <button onclick="moverDerecha();">➡</button>
-  </div>
+        <aside class="panel-lateral">
+          <section class="marcadores">
+            <article class="card-info">
+              <span class="label-info">Puntos</span>
+              <span id="puntos" class="valor-info">0</span>
+            </article>
 
+            <article class="card-info">
+              <span class="label-info">Tiempo</span>
+              <span id="tiempo" class="valor-info">10</span>
+            </article>
+          </section>
 
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Tiempo: <span id="tiempo">10</span></span>
-  </div>
+          <section class="controles">
+            <button class="btn-mov btn-arriba" onclick="moverArriba();">⬆</button>
 
-  <div>
-    <button onclick="reiniciarJuego();">Reiniciar</button>
-  </div>
+            <div class="fila-centro">
+              <button class="btn-mov" onclick="moverIzquierda();">⬅</button>
+              <button class="btn-mov" onclick="moverAbajo();">⬇</button>
+              <button class="btn-mov" onclick="moverDerecha();">➡</button>
+            </div>
+          </section>
 
-  <p id="mensaje"></p>
+          <section class="acciones">
+            <button class="btn-reiniciar" onclick="reiniciarJuego();">Reiniciar</button>
+          </section>
 
-<!-- Carga de js -->
- <script src="cazando.js"></script>
- <script src="utils.js"></script>
+          <p id="mensaje"></p>
+        </aside>
+      </section>
+    </section>
+  </main>
+
+  <script src="cazando.js"></script>
+  <script src="utils.js"></script>
 </body>
 </html>
