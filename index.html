@@ -42,9 +42,14 @@
             </article>
           </section>
 
+          <section>
+            <div class="play-info">
+              <p id="txtPlayInfo">Atrapa Tu Plato de Comida❗</p>
+            </div>
+          </section>
+
           <section class="controles">
             <button class="btn-mov btn-arriba" onclick="moverArriba();">⬆</button>
-
             <div class="fila-centro">
               <button class="btn-mov" onclick="moverIzquierda();">⬅</button>
               <button class="btn-mov" onclick="moverAbajo();">⬇</button>
@@ -56,11 +61,31 @@
             <button class="btn-reiniciar" onclick="reiniciarJuego();">Reiniciar</button>
           </section>
 
+          <section class="ayuda-juego">
+            <p class="ayuda-desktop">
+              Puedes Usar: <strong>W - A - S - D</strong> o <strong>↑ ← ↓ →</strong>
+            </p>
+            <p class="ayuda-mobile">
+              Mobile: usa los botones táctiles para mover al gato
+            </p>
+          </section>
           <p id="mensaje"></p>
+
         </aside>
       </section>
     </section>
   </main>
+
+    <div id="avisoMobile" class="aviso-mobile oculto">
+      <div class="aviso-mobile-card">
+        <h2>¡Tip de juego!</h2>
+        <p>
+          En celular puedes mover al gato usando los botones táctiles:
+          arriba, izquierda, abajo y derecha.
+        </p>
+        <button id="btnCerrarAviso" class="btn-aviso">Entendido</button>
+      </div>
+    </div>
 
   <script src="cazando.js"></script>
   <script src="utils.js"></script>
