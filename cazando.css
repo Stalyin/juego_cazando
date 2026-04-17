@@ -330,7 +330,6 @@ canvas {
   }
 
   .aviso-mobile-card {
-    display: block;
     width: min(100%, 340px);
     border: 3px solid var(--borde);
     border-radius: 18px;

@@ -67,20 +67,20 @@ function terminarJuego(gano) {
   }
 }
 
-function configurarAvisoMobile() {
-  let aviso = document.getElementById("avisoMobile");
-  let btnCerrarAviso = document.getElementById("btnCerrarAviso");
+// function configurarAvisoMobile() {
+//   let aviso = document.getElementById("avisoMobile");
+//   let btnCerrarAviso = document.getElementById("btnCerrarAviso");
 
-  if (!aviso || !btnCerrarAviso) return;
+//   if (!aviso || !btnCerrarAviso) return;
 
-  if (window.innerWidth <= 980) {
-    aviso.classList.remove("oculto");
-  }
+//   if (window.innerWidth <= 980) {
+//     aviso.classList.remove("oculto");
+//   }
 
-  btnCerrarAviso.onclick = function () {
-    aviso.classList.add("oculto");
-  };
-}
+//   btnCerrarAviso.onclick = function () {
+//     aviso.classList.add("oculto");
+//   };
+// }
 
 function iniciarJuego() {
   juegoTerminado = false;
