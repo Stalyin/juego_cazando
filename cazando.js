@@ -100,7 +100,7 @@ function iniciarJuego() {
   clearInterval(intervaloTiempo);
   intervaloTiempo = setInterval(restarTiempo, 1000);
 
-  configurarAvisoMobile();
+  // configurarAvisoMobile();
 }
 
 function limitarMovimiento() {
