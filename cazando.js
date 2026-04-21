@@ -162,7 +162,7 @@ function moverAbajo() {
 }
 
 let puntaje = 0;
-let tiempo = 10;
+let tiempo = 15;
 
 function restarTiempo() {
   if (juegoTerminado) return;
@@ -212,7 +212,7 @@ function detectarColision() {
 
 function reiniciarJuego() {
   puntaje = 0;
-  tiempo = 10;
+  tiempo = 15;
   juegoTerminado = false;
 
   mostrarEnSpan("puntos", puntaje);
