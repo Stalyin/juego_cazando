@@ -162,7 +162,8 @@ function moverAbajo() {
 }
 
 let puntaje = 0;
-let tiempo = 15;
+let tiempoBase = 15;
+let tiempo = tiempoBase;
 
 function restarTiempo() {
   if (juegoTerminado) return;
@@ -179,6 +180,9 @@ function restarTiempo() {
   }
 }
 
+// Modificar el juego para que, cada vez que el gato atrape la comida, el tiempo
+// disponible se reduzca en 1 segundo respecto al valor anterior
+
 function detectarColision() {
   if (juegoTerminado) return;
 
@@ -189,7 +193,8 @@ function detectarColision() {
     gatoY <= comidaY + ALTO_COMIDA
   ) {
     puntaje += 1;
-    tiempo = 15;
+    tiempoBase -= 1;
+    tiempo = tiempoBase;
 
     mostrarEnSpan("puntos", puntaje);
     mostrarEnSpan("tiempo", tiempo);
@@ -212,7 +217,8 @@ function detectarColision() {
 
 function reiniciarJuego() {
   puntaje = 0;
-  tiempo = 15;
+  tiempoBase = 15;
+  tiempo = tiempoBase;
   juegoTerminado = false;
 
   mostrarEnSpan("puntos", puntaje);
